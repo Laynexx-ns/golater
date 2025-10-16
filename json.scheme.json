@@ -1,0 +1,85 @@
+{
+  "title": "Template Configuration",
+  "type": "object",
+  "properties": {
+    "templates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Template name (human-readable)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of what the template does"
+          },
+          "lang": {
+            "type": "string",
+            "description": "Language or languages used in this template"
+          },
+          "endline_format": {
+            "type": "string",
+            "description": "Endline format (Unix or Windows)"
+          },
+          "repeated": {
+            "type": "object",
+            "description": "Defines repeated folders and files for multiple tasks",
+            "properties": {
+              "folder": {
+                "type": "string",
+                "description": "Pattern for folder naming, e.g., task-$n"
+              },
+              "files": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "filename": { "type": "string" },
+                    "ext": { "type": "string" },
+                    "data": {
+                      "oneOf": [
+                        {
+                          "type": "array",
+                          "items": { "type": "string" }
+                        },
+                        { "type": "string" }
+                      ],
+                      "description": "File contents as array of lines or a single string"
+                    }
+                  },
+                  "required": ["filename", "ext", "data"]
+                }
+              }
+            },
+            "required": ["folder", "files"]
+          },
+          "root": {
+            "type": "array",
+            "description": "Files created in the project root directory",
+            "items": {
+              "type": "object",
+              "properties": {
+                "filename": { "type": "string" },
+                "ext": { "type": "string" },
+                "data": {
+                  "oneOf": [
+                    {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    },
+                    { "type": "string" }
+                  ]
+                }
+              },
+              "required": ["filename", "ext", "data"]
+            }
+          }
+        },
+        "required": ["name", "description", "lang", "repeated", "root"]
+      }
+    }
+  },
+  "required": ["templates"]
+}
