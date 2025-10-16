@@ -1,4 +1,4 @@
-module golater
+module github.com/Laynexx-ns/golater
 
 go 1.25.0
 
