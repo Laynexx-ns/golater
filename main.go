@@ -1,8 +1,9 @@
 package main
 
 import (
-	golater "golater/internal"
 	"log"
+
+	golater "github.com/Laynexx-ns/golater/internal"
 )
 
 func main() {
